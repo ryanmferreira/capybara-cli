@@ -75,22 +75,22 @@ To build manually, you need **Premake5** and a C++ compiler (**GCC** or **Clang*
 
 1. Clone the repository:
 
-```bash
-git clone https://github.com/RyanM-Ferreira/capybara-cli.git
-cd capybara-cli
-```
+    ```bash
+    git clone https://github.com/RyanM-Ferreira/capybara-cli.git
+    cd capybara-cli
+    ```
 
-1. Generate the Makefiles:
+2. Generate the Makefiles:
 
-```bash
-premake5 gmake
-```
+    ```bash
+    premake5 gmake
+    ```
 
-1. Compile:
+3. Compile:
 
-```bash
-make
-```
+    ```bash
+    make
+    ```
 
 *The binary will be located in `bin/linux_x86_64_debug/`.*
 
