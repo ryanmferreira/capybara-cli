@@ -1,22 +1,30 @@
 workspace "capybara"
 configurations {"Debug", "Release"}
-architecture "x86_64"
-system "windows"
+architecture("x86_64", "x86", "ARM", "AARCH64", "RISCV64")
+system("linux", "macosx", "windows")
 
 project "capybara-cli"
 kind "ConsoleApp"
 language "C++"
-cppdialect "C++20"
-targetdir "bin/%{cfg.system}_%{cfg.architecture}/%{cfg.buildcfg}"
+cppdialect "C++23"
+
+targetdir "bin/%{cfg.system}_%{cfg.architecture}_%{cfg.buildcfg}"
+objdir "bin/%{cfg.system}_%{cfg.architecture}_%{cfg.buildcfg}/obj"
 
 files {"**.cpp"}
 
 filter "configurations:Debug"
-defines {"DEBUG"}
-symbols "On"
-targetname "capybara" -- * Eu mudei os binaries, eu deveria mudar alguma coisa no json do Bucket?
+    runtime "Debug"
+    defines {"DEBUG"}
+    linktimeoptimization "off"
+    optimize "off"
+    symbols "full"
+    targetname "capybara"
 
 filter "configurations:Release"
-defines {"NDEBUG"}
-optimize "On"
-targetname "capybara" -- * Eu mudei os binaries, eu deveria mudar alguma coisa no json do Bucket?
+    runtime "Release"
+    defines {"NDEBUG"}
+    linktimeoptimization "on"
+    optimize "on"
+    symbols "off"
+    targetname "capybara"
