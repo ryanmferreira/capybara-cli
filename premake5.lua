@@ -1,5 +1,5 @@
 workspace "capybara"
-configurations {"Debug", "Release"}
+configurations {"debug", "release"}
 architecture("x86_64", "x86", "ARM", "AARCH64", "RISCV64", "ppc", "ppc64")
 system("linux", "macosx", "windows", "bsd", "haiku")
 
@@ -13,7 +13,7 @@ objdir "bin/%{cfg.system}_%{cfg.architecture}_%{cfg.buildcfg}/obj"
 
 files {"**.cpp"}
 
-filter "configurations:Debug"
+filter "configuration:debug"
     runtime "Debug"
     defines {"DEBUG"}
     linktimeoptimization "off"
@@ -21,7 +21,7 @@ filter "configurations:Debug"
     symbols "full"
     targetname "capybara"
 
-filter "configurations:Release"
+filter "configuration:release"
     runtime "Release"
     defines {"NDEBUG"}
     linktimeoptimization "on"

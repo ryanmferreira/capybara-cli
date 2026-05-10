@@ -1,34 +1,54 @@
 #include <iostream>
-#include <stdint.h>
+#include <fstream>
+
 using namespace std;
 
 const string capybara[9] = {
-        "    /\\__/\\_",
-        "   /       \\",
-        "  /    0    \\----------_",
-        " | Y                    \\",
-        " \\______/                \\",
-        "       \\                 |",
-        "        |   /-______-|    \\",
-        "        |   |         \\   /",
-        "       //__/         //__/" 
-};
+    "    /\\__/\\_",
+    "   /       \\",
+    "  /    0    \\----------_",
+    " | Y                    \\",
+    " \\______/                \\",
+    "       \\                 |",
+    "        |   /-______-|    \\",
+    "        |   |         \\   /",
+    "       //__/         //__/"};
 
-// ? Talvez organizar isso aqui? Tá meio tenso de se entender.
 constexpr uint8_t capybaraLines = sizeof(capybara) / sizeof(capybara[0]);
 constexpr uint8_t maxPerLine = 19;
 constexpr uint8_t textStartLine = 2;
 
+string fileText;
+
 int main(int argc, char *argv[])
 {
-    string input = "Capybara Supremacy!"; // se nenhum argumento for fornecido esse sera o padrão
+    string input;
 
     if (argc > 1)
     {
-        input = argv[1];
+        ifstream file(argv[1]);
+
+        // Now we read files, which is pretty cool! :D
+        if (file.is_open())
+        {
+            while (getline(file, fileText))
+            {
+                input += fileText + " ";
+            }
+
+            file.close();
+        }
+        else
+        {
+            input = string(argv[1]);
+        }
+    }
+    else
+    {
+        input = "Capybara Supremacy!";
     }
 
-    // Calcula a maior linha
+    // Calculate the longest row of the capybara to align the text properly
     size_t biggestLine = 0;
     for (const auto line : capybara)
     {
@@ -38,7 +58,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    // Quebra a linha
+    // Break the line into multiple lines if it exceeds the maximum characters per line
     for (int8_t i = 0; i < capybaraLines; i++)
     {
         cout << capybara[i];
