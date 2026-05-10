@@ -2,16 +2,30 @@
 
 A friendly capybara that says anything you want... right in your terminal.
 
-This is a simple terminal utility, mainly created as a test for adding buckets and packages to **Scoop**. Nothing too serious but capybaras are awesome, aren't they?
+This is a simple terminal utility, mainly created as a hobby project to explore package management across different systems. Nothing too serious but capybaras are awesome, aren't they?
 
 ---
 
 ## Installation
 
-It is available on Scoop, install it like this:
+### Arch Linux (AUR)
+
+If you are on Arch Linux, CachyOS, or any Arch-based distro, you can install it using your favorite AUR helper:
 
 ```bash
-scoop bucket add capybara https://github.com/RyanM-Ferreira/capybara-cli
+paru -S capybara-cli
+
+# or
+
+yay -S capybara-cli
+```
+
+### Windows (Scoop)
+
+It is also available as a Scoop bucket:
+
+```powershell
+scoop bucket add capybara https://github.com/RyanM-Ferreira/capybara-cli`
 scoop install capybara
 ```
 
@@ -25,13 +39,21 @@ After installing with Scoop (or compiling from source), just run:
 capybara "your message here"
 ```
 
-Example output:
+### Passing text files
+
+You can also pass a file to the capybara:
+
+```bash
+capybara ~/message.txt
+```
+
+#### Example output
 
 ```plaintext
     /\__/\_
    /       \
   /    0    \----------_
- | Y                    \  Hello world!
+ | Y                    \  your message here
  \______/                \
        \                 |
         |   /-______-|    \
@@ -39,7 +61,7 @@ Example output:
        //__/         //__/
 ```
 
-If no argument is passed, it defaults to:
+#### If no argument is passed, it defaults to
 
 ```plaintext
 Capybara supremacy!
@@ -49,21 +71,34 @@ Capybara supremacy!
 
 ## Building from Source
 
-To build, run **Premake** in the root directory with your desired arguments. Make sure you have Premake installed.
+To build manually, you need **Premake5** and a C++ compiler (**GCC** or **Clang**).
 
-### Example
+1. Clone the repository:
 
 ```bash
-premake5 vs2022
+git clone https://github.com/RyanM-Ferreira/capybara-cli.git
+cd capybara-cli
 ```
 
-For other build options, check the [Premake documentation](https://premake.github.io/docs/Using-Premake).
+1. Generate the Makefiles:
+
+```bash
+premake5 gmake
+```
+
+1. Compile:
+
+```bash
+make
+```
+
+*The binary will be located in `bin/linux_x86_64_debug/`.*
 
 ---
 
 ## License
 
-Public domain license. Do whatever you want... just be nice to capybaras.
+[MIT License](LICENSE) - Do whatever you want... just be nice to capybaras.
 
 ---
 
