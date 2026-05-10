@@ -24,6 +24,6 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}"
     
-    install -Dm755 bin/linux_x86_64_Debug/capybara "$pkgdir/usr/bin/capybara"
+    install -Dm755 bin/linux_x86_64_debug/capybara "$pkgdir/usr/bin/capybara"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

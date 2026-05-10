@@ -1,17 +1,29 @@
-# Visual Studio
-# TODO: Organizar isso aqui
-/.vscode
-/.vs
+### Build Artifacts ###
+bin/
+obj/
+*.o
+*.d
+
+### Premake & GNU Make ###
+Makefile
+*.make
+
+### Arch Linux Packaging (makepkg) ###
+# Temporary folders created during makepkg
+src/
+pkg/
+# The internal clone created by makepkg
+capybara-cli/
+# Generated package files and logs
+*.pkg.tar.zst
+*.log
+.SRCINFO
+
+### Visual Studio & VS Code ###
+.vs/
 *.sln
 *.vcxproj
+*.vcxproj.user
+*.vcxproj.filters
 *.pdb
 *.exe
-*.user
-
-# Compilação (no geral)
-/obj
-/bin
-
-# GCC - Gmake
-*.make
-Makefile
