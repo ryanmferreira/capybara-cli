@@ -13,7 +13,7 @@ objdir "bin/%{cfg.system}_%{cfg.architecture}_%{cfg.buildcfg}/obj"
 
 files {"**.cpp"}
 
-filter "configuration:debug"
+filter "configurations:debug"
     runtime "Debug"
     defines {"DEBUG"}
     linktimeoptimization "off"
@@ -21,7 +21,7 @@ filter "configuration:debug"
     symbols "full"
     targetname "capybara"
 
-filter "configuration:release"
+filter "configurations:release"
     runtime "Release"
     defines {"NDEBUG"}
     linktimeoptimization "on"

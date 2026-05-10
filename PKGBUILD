@@ -1,4 +1,4 @@
-# Mantenedor: Ryan Ferreira <dev.ryanmferreira@outlook.com>, Rafael Oliveira 
+# Mantenedor: Ryan Ferreira <dev.ryanmferreira@outlook.com>, Rafael Oliveira
 pkgname=capybara-cli
 pkgver=1.0.0
 pkgrel=1
@@ -7,20 +7,23 @@ arch=('x86_64')
 url="https://github.com/ryanmferreira/capybara-cli"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('clang' 'make')
+makedepends=('clang' 'make' 'premake')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname"
-  export CC=clang
-  export CXX=clang++
-  make
+    cd "$srcdir/$pkgname"
+    
+    premake5 gmake
+    
+    export CC=clang
+    export CXX=clang++
+    make
 }
 
 package() {
-  cd "$pkgname"
-  install -Dm755 bin/linux_x86_64_Debug/capybara "$pkgdir/usr/bin/capybara"
-  
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "${srcdir}/${pkgname}"
+    
+    install -Dm755 bin/linux_x86_64_Debug/capybara "$pkgdir/usr/bin/capybara"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
