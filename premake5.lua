@@ -1,7 +1,7 @@
 workspace "capybara"
 configurations {"Debug", "Release"}
-architecture("x86_64", "x86", "ARM", "AARCH64", "RISCV64")
-system("linux", "macosx", "windows")
+architecture("x86_64", "x86", "ARM", "AARCH64", "RISCV64", "ppc", "ppc64")
+system("linux", "macosx", "windows", "bsd", "haiku")
 
 project "capybara-cli"
 kind "ConsoleApp"
