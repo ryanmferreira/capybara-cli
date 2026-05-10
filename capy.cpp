@@ -15,7 +15,7 @@ const string capybara[9] = {
     "       //__/         //__/"};
 
 constexpr uint8_t capybaraLines = sizeof(capybara) / sizeof(capybara[0]);
-constexpr uint8_t maxPerLine = 19;
+constexpr uint8_t maxPerLine = 32;
 constexpr uint8_t textStartLine = 2;
 
 string fileText;
@@ -58,6 +58,7 @@ int main(int argc, char *argv[])
         }
     }
 
+    // ! We need to refactor this code snippet to break down entire words instead of everything
     // Break the line into multiple lines if it exceeds the maximum characters per line
     for (int8_t i = 0; i < capybaraLines; i++)
     {
