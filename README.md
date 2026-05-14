@@ -25,7 +25,7 @@ yay -S capybara-cli
 It is also available as a Scoop bucket:
 
 ```powershell
-scoop bucket add capybara https://github.com/RyanM-Ferreira/capybara-cli`
+scoop bucket add capybara https://github.com/ryanmferreira/capybara-cli`
 scoop install capybara
 ```
 
@@ -71,7 +71,7 @@ Capybara supremacy!
 
 ## Building from Source
 
-To build manually, you need **Premake5** and a C++ compiler (**GCC** or **Clang**).
+To build manually, you need Premake5, Ninja, and a C++ compiler (Clang recommended for cross-compilation).
 
 1. Clone the repository:
 
@@ -80,19 +80,25 @@ To build manually, you need **Premake5** and a C++ compiler (**GCC** or **Clang*
     cd capybara-cli
     ```
 
-2. Generate the Makefiles:
+2. Generate the build files:
+You can specify the target Operating System (linux, windows, macosx, or bsd):
 
     ```bash
-    premake5 gmake
+    premake5 ninja --os=linux // or any other supported OS
     ```
 
-3. Compile:
+3. **Compile for a specific architecture:**
+List all available targets using `ninja -t targets`. To compile, specify the configuration and architecture:
 
-    ```bash
-    make
+```bash
+    # Build for x86_64 (Default)
+    ninja release_x86_64
+
+    # Build for other architectures (ARM, ARM64, RISCV64, etc.)
+    ninja release_ARM64
     ```
 
-*The binary will be located in `bin/linux_x86_64_debug/`.*
+*The binary will be located in `bin/{os}_{architecture}_{config}/`.*
 
 ---
 
