@@ -76,7 +76,7 @@ To build manually, you need Premake5, Ninja, and a C++ compiler (Clang recommend
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/RyanM-Ferreira/capybara-cli.git
+    git clone https://github.com/ryanmferreira/capybara-cli.git
     cd capybara-cli
     ```
 
@@ -90,13 +90,13 @@ You can specify the target Operating System (linux, windows, macosx, or bsd):
 3. **Compile for a specific architecture:**
 List all available targets using `ninja -t targets`. To compile, specify the configuration and architecture:
 
-```bash
-    # Build for x86_64 (Default)
-    ninja release_x86_64
-
-    # Build for other architectures (ARM, ARM64, RISCV64, etc.)
-    ninja release_ARM64
-```
+    ```bash
+        # Build for x86_64 (Default)
+        ninja release_x86_64
+    
+        # Build for other architectures (ARM, ARM64, RISCV64, etc.)
+        ninja release_ARM64
+    ```
 
 > *The binary will be located in `bin/{os}_{architecture}_{config}/`.*
 
