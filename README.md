@@ -39,14 +39,6 @@ After installing with Scoop (or compiling from source), just run:
 capybara "your message here"
 ```
 
-### Passing text files
-
-You can also pass a file to the capybara:
-
-```bash
-capybara ~/message.txt
-```
-
 #### Example output
 
 ```plaintext
@@ -59,6 +51,14 @@ capybara ~/message.txt
         |   /-______-|    \
         |   |         \   /
        //__/         //__/
+```
+
+### Passing text files
+
+You can also pass a file to the capybara:
+
+```bash
+capybara ~/message.txt
 ```
 
 #### If no argument is passed, it defaults to
@@ -96,9 +96,9 @@ List all available targets using `ninja -t targets`. To compile, specify the con
 
     # Build for other architectures (ARM, ARM64, RISCV64, etc.)
     ninja release_ARM64
-    ```
+```
 
-*The binary will be located in `bin/{os}_{architecture}_{config}/`.*
+> *The binary will be located in `bin/{os}_{architecture}_{config}/`.*
 
 ---
 
