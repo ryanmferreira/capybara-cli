@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include <stdint.h>
+#include <string>
 
 using namespace std;
 
@@ -20,12 +22,19 @@ constexpr uint8_t textStartLine = 2;
 
 string fileText;
 
+int processParameters(char *argv[]);
+
 int main(int argc, char *argv[])
 {
     string input;
 
     if (argc > 1)
     {
+        if (processParameters(argv) == 1)
+        {
+            return 0;
+        }
+
         ifstream file(argv[1]);
 
         // Now we read files, which is pretty cool! :D
@@ -75,6 +84,29 @@ int main(int argc, char *argv[])
         }
 
         cout << endl;
+    }
+
+    return 0;
+}
+
+int processParameters(char *argv[])
+{
+    string param = argv[1];
+
+    if (param == "--help" || param == "-h")
+    {
+        cout << "Usage: capybara [text or file]" << endl;
+        cout << "Options:" << endl;
+        cout << " --help    Shows this help menu" << endl;
+        cout << " --version Shows the program version" << endl;
+
+        return 1;
+    }
+
+    if (param == "--version" || param == "-v")
+    {
+        cout << "Capybara CLI v1.0.0" << endl;
+        return 1;
     }
 
     return 0;

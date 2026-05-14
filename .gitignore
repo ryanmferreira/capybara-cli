@@ -8,6 +8,11 @@ obj/
 Makefile
 *.make
 
+### Ninja ###
+*.ninja
+.ninja_deps
+.ninja_log
+
 ### Arch Linux Packaging (makepkg) ###
 # Temporary folders created during makepkg
 src/
