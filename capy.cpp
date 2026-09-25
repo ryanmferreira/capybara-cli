@@ -2,10 +2,11 @@
 #include <fstream>
 #include <stdint.h>
 #include <string>
+#include <array>
 
 using namespace std;
 
-const string capybara[9] = {
+const array<string,9> capybara = {
     "    /\\__/\\_",
     "   /       \\",
     "  /    0    \\----------_",
@@ -14,9 +15,10 @@ const string capybara[9] = {
     "       \\                 |",
     "        |   /-______-|    \\",
     "        |   |         \\   /",
-    "       //__/         //__/"};
+    "       //__/         //__/"
+};
 
-constexpr uint8_t capybaraLines = sizeof(capybara) / sizeof(capybara[0]);
+constexpr uint8_t capybaraLines = capybara.size();
 constexpr uint8_t maxPerLine = 32;
 constexpr uint8_t textStartLine = 2;
 
